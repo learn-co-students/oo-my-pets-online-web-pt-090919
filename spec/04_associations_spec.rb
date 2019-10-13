@@ -1,3 +1,4 @@
+require 'pry' 
 require_relative 'spec_helper.rb'
 
 describe "Associations" do
@@ -11,7 +12,7 @@ describe "Associations" do
 
   context 'Owner instance methods' do
     describe "#cats" do
-      it "returnsa a collection of all the cats that belong to the owner" do
+      it "returns a collection of all the cats that belong to the owner" do
         cat_1 = Cat.new("Garfield", @owner)
         cat_2 = Cat.new("Fido", @owner)
         cat_3 = Cat.new("Whiskers", @owner)
@@ -24,7 +25,7 @@ describe "Associations" do
     end
 
     describe "#dogs" do
-      it "returnsa a collection of all the dogs that belong to the owner" do
+      it "returns a collection of all the dogs that belong to the owner" do
         dog_1 = Dog.new("Fido", @owner)
         dog_2 = Dog.new("Snuffles", @owner)
         dog_3 = Dog.new("Charley", @owner)
@@ -35,6 +36,7 @@ describe "Associations" do
         expect(@owner.dogs.count).to eq(3)
       end
     end
+    
     describe "#buy_cat" do
       it 'can buy a cat that is an instance of the Cat class' do
         expect(@owner.cats.count).to eq(0)
@@ -54,7 +56,7 @@ describe "Associations" do
         @owner.buy_cat("Crookshanks")
         @owner.buy_cat("Whiskers")
         @owner.buy_cat("Garfield")
-
+        
         expect(@owner.cats[0].name).to eq("Crookshanks")
         expect(@owner.cats[1].name).to eq("Whiskers")
         expect(@owner.cats[2].name).to eq("Garfield")
@@ -72,7 +74,7 @@ describe "Associations" do
         @owner.dogs.each do |dog|
           expect(dog).to be_a(Dog)
         end
-
+      
         expect(@owner.dogs.count).to eq(3)
       end
 
