@@ -27,7 +27,7 @@ class Owner
     @@all_owners.clear
   end
   
-  
+
   def cats
     Cat.all.select{|cat| cat.owner == self}
   end
@@ -36,11 +36,15 @@ class Owner
     Dog.all.select{|dog| dog.owner == self}
   end
 
-  def buy_cat(cat)
-    new_cat = self.Cat.new(name)
+  def buy_cat(name)
+    new_cat = Cat.new(name, self)
     @my_pets[:cats] << new_cat
   end 
-   #cat.owner = self
+  
+  def buy_dog(name)
+    new_dog = Dog.new(name, self)
+    @my_pets[:dogs] << new_dog
+  end 
   
   def feed_cats
     Cat.all.each {|cat| cat.mood = "happy"}
@@ -49,5 +53,14 @@ class Owner
   def walk_dogs
     Dog.all.each {|dog| dog.mood = "happy"}
   end
+  
+  def sell_pets
+
+		 	
+  end
+
+	def list_pets 
+  "I have #{@my_pets[:dogs].count} dog(s), and #{@my_pets[:cats].count} cat(s)."
+	end 
   
 end
