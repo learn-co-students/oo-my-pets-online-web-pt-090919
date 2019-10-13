@@ -54,10 +54,18 @@ class Owner
     Dog.all.each {|dog| dog.mood = "happy"}
   end
   
+  
   def sell_pets
-    @my_pets.each {|pet| pet.clear}
-		 	
-  end
+    dogs.each do |dog| 
+      dog.mood = "nervous"
+      dog.owner = nil
+     end
+    cats.each do |cat| 
+      cat.mood = "nervous"
+      cat.owner = nil
+   end
+ end
+  
 
 	def list_pets 
   "I have #{@my_pets[:dogs].count} dog(s), and #{@my_pets[:cats].count} cat(s)."
